@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you page</title>
+</head>
+<body>
+    <style>
+        body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+h1 {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+p {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+
+#userData {
+    margin-top: 20px; /* Optional margin for the user data section */
+}
+    </style>
+    <h1>Thank You for Completing the Survey</h1>
+    <p>Thanks a ton for taking out your precious time and for completing the survey.</p>
+
+    <div id="userData">
+        <p>Email Address 🡪 <span id="email"></span></p>
+        <p>Contact Number 🡪 <span id="contact"></span></p>
+    </div>
+
+    <script>
+        // Retrieve and parse the stored form data from localStorage
+        const storedData = localStorage.getItem('formData');
+        if (storedData) {
+            const formData = JSON.parse(storedData);
+            const email = formData.email;
+            const countryCode = formData.country_code;
+            const mobileNumber = formData.mobile_number;
+
+            // Display the data on the thank you page
+            document.getElementById('email').textContent = email;
+            document.getElementById('contact').textContent = `${countryCode}-${mobileNumber}`;
+        }
+    </script>
+</body>
+</html>

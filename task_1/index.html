@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-engage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content-wrapper">
+        <div id="image-container">
+            <div class="image-wrapper">
+                <img class="image" src="https://i.imgur.com/QivM2ZT.jpg" alt="hero-image">
+            </div>
+        </div>
+        <div id="contact-section">
+            <div class="section-wrapper">
+                <img src="https://i.imgur.com/a0o2iW3.jpg" alt="logo" class="logo-image">
+                <h1 class="form-heading">Get a FREE</h1>
+                <h3 class="form-subheading">consultation with an expert</h3>
+                <form onsubmit="onSubmitForm(event)" action="" id="contact-form">
+                    <div class="input-wrapper">
+                        <input class="input" name="email" type="text" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <select class="input select-width" name="country_code" id="country_code">
+                            <option value="+91" selected>+91</option>
+                            <option value="+1" >+1</option>
+                            <option value="81" >+81</option>
+                            <option value="+86" >+86</option>
+                            <option value="+49" >+49</option>
+                        </select>
+                        <input class="input mobile-input-width" type="number" name="mobile_number" placeholder="Enter your mobile" required>
+                    </div>
+                    <input class="talk-to-us-button" type="submit" value="Talk to Us →">
+                    <div id="error"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

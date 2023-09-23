@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nunjucks Task</title>
+    <!-- Include Nunjucks library -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/3.2.3/nunjucks.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/3.2.4/nunjucks.min.js"></script>
+</head>
+<body>
+    <h1>Nunjucks Task</h1>
+
+    <script>
+        var data = [
+            {
+                "id": 1,
+                "name": "Leanne Graham",
+                "username": "Bret",
+                "email": "Sincere@april.biz",
+                "address": {
+                    "street": "Kulas Light",
+                    "suite": "Apt. 556",
+                    "city": "Gwenborough",
+                    "zipcode": "92998-3874",
+                    "geo": {
+                        "lat": "-37.3159",
+                        "lng": "81.1496"
+                    }
+                },
+                "phone": "1-770-736-8031 x56442",
+                "website": "hildegard.org",
+                "company": {
+                    "name": "Romaguera-Crona",
+                    "catchPhrase": "Multi-layered client-server neural-net",
+                    "bs": "harness real-time e-markets"
+                }
+            },
+            {
+                "id": 2,
+                "name": "Ervin Howell",
+                "username": "Antonette",
+                "email": "Shanna@melissa.tv",
+                "address": {
+                    "street": "Victor Plains",
+                    "suite": "Suite 879",
+                    "city": "Wisokyburgh",
+                    "zipcode": "90566-7771",
+                    "geo": {
+                        "lat": "-43.9509",
+                        "lng": "-34.4618"
+                    }
+                },
+                "phone": "010-692-6593 x09125",
+                "website": "anastasia.net",
+                "company": {
+                    "name": "Deckow-Crist",
+                    "catchPhrase": "Proactive didactic contingency",
+                    "bs": "synergize scalable supply-chains"
+                }
+            },
+            // Add more data entries here...
+        ];
+    </script>
+
+
+    <script type="text/nunjucks" id="my-template">
+        {% for item in data %}
+            {% if item.id is even %}
+                Name: {{ item.name }}<br>
+                Username: {{ item.username }}<br>
+                Email: {{ item.email }}<br>
+            {% else %}
+                I'm Odd<br>
+            {% endif %}
+            
+            {% set addressKeys = item.address | keys %}
+            {% for key in addressKeys %}
+                Address Key: {{ key }}<br>
+                Address Value: {{ item.address[key] }}<br>
+            {% endfor %}
+            
+            {% if item.email endsWith('.biz') %}
+                Name: {{ item.name }}<br>
+                Email: {{ item.email }}<br>
+            {% endif %}
+            
+            {% if ['Aliyaview', 'Howemouth', 'Gwenborough'] | contains(item.address.city) %}
+                The Zipcode and Geo of cityname {{ item.address.city }} is: {{ item.address.zipcode }} and {{ item.address.geo.lat }}, {{ item.address.geo.lng }}<br>
+            {% endif %}
+            
+            CatchPhrase: {{ item.company.catchPhrase | slice(0, 15) }}<br>
+        {% endfor %}
+    </script>
+
+        
+    </script>
+    
+
+    <!-- Render the template with data -->
+    <script>
+        // Get the template source
+        var templateSource = document.getElementById('my-template').innerHTML;
+
+        // Compile the template
+        var template = nunjucks.compile(templateSource);
+
+        // Render the template with the data
+        var renderedHTML = template.render({ data: data });
+
+        // Insert the rendered HTML into the document
+        document.body.innerHTML += renderedHTML;
+    </script>
+</body>
+</html>
